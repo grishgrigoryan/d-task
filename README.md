@@ -1,5 +1,24 @@
 # DEEL BACKEND TASK
 
+## Suggestions and notes
+
+1. Have dependency injection on top of express.
+   I would use either https://nestjs.com/ or https://github.com/typestack/routing-controllers 
+   depending on complexity of app.
+1. Have separate `controllers`, `services` and `db` (`repository` ) layer.
+1. Replace Active Record pattern with Data Mapper pattern.
+   Active Record works for POCs, but for real apps it's better to start with mapper,
+   otherwise you will need to change it later.
+   So better to start with Mapper from beginning   
+1. I have never used sql lite (I am sure you also do not use this on Prod apps ) but as I got it does not have row level locks (it locks the entire file 🙁 ) 
+   like Postgre (`select (bla bla) for update`).
+   so I have tried to handle concurrency with atomic updates.
+1. I am curious why sequelize ? Have never used it before but to be honest it smells old.  
+   as a fun of Typescript and es next `@decorators` I would suggest to use TypeORM.
+
+So from structure perspective having typescript with nest or other DI framework and good DB layer will make you application 
+look like well-structured Java code
+
 💫 Welcome! 🎉
 
 This backend exercise involves building a Node.js/Express.js app that will serve a REST API. We imagine you should spend around 3 hours at implement this feature.
